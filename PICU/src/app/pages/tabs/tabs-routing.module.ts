@@ -14,6 +14,10 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../home/home.module').then(m => m.HomePageModule)
+          },{
+            path: 'picu',
+            loadChildren: () =>
+              import('../picu/picu.module').then(m => m.PicuPageModule)
           }
         ]
       },
