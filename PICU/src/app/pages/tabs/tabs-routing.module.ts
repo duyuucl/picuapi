@@ -49,6 +49,10 @@ const routes: Routes = [
             loadChildren: () =>
               import('../team/team.module').then(m => m.TeamPageModule)
           }
+          , {
+            path: 'team-detail',
+            loadChildren: () => import('../team-detail/team-detail.module').then( m => m.TeamDetailPageModule)
+          }
         ]
       },
       {

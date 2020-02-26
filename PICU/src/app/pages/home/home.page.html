@@ -1,36 +1,73 @@
-<ion-header>
+<ion-header class="header">
   <ion-toolbar>
     <ion-title style='text-align:center'>PICU PARENT APP</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-card class="card1" routerLink="picu">
-    <ion-card-title class="title1" >
-      <ion-icon slot="" src="../assets/PICU_Icon.svg"></ion-icon>PICU</ion-card-title>
-  </ion-card>
-  <ion-card class="card1">
-    <ion-card-title class="title1">
-      <ion-icon slot="" src="../assets/Your_Child_Icon.svg"></ion-icon>YOUR CHILD
-    </ion-card-title>
-  </ion-card>
-  <ion-card class="card1">
-    <ion-card-title class="title1">
-      <ion-icon slot="" src="../assets/Team_Icon.svg"></ion-icon>TEAM
-    </ion-card-title>
-  </ion-card>
-  <ion-card class="card1">
-    <ion-card-title class="title1">
-      <ion-icon slot="" src="../assets/Visit_Icon.svg"></ion-icon>VISIT
-    </ion-card-title>
-  </ion-card>
-  <ion-card class="card1">
-    <ion-card-title class="title1">
-      <ion-icon name="square"></ion-icon>SUPPORT US
-    </ion-card-title>
-  </ion-card>
-  <ion-button class="faqbtn" expand="block" href="/faq">
-    <ion-icon slot="start" src="../assets/GOSH-dog icon.svg"></ion-icon>
-    FAQ & FEEDBACK
-  </ion-button>
+<ion-content class="content" fullscreen>
+  <section>
+    <img src="../assets/photos/picu5.jpg" />
+  </section>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="/tabs/picu" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">PICU</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="/tabs/yourchild" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">YOUR CHILD</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="/tabs/team" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">TEAM</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="/tabs/visit" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">VISIT</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">SUPPORT US</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card1" href="/faq" color="primary">
+          <ion-item>
+            <ion-icon slot="" name="star"></ion-icon>
+            <ion-card-title class="title1">FAQ&FEEDBACK</ion-card-title>
+          </ion-item> 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+</ion-grid>
 </ion-content>
