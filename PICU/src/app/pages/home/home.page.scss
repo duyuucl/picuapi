@@ -3,12 +3,14 @@
     height: 50px;
     border-radius:28px;
     text-align:center;
-    background-color: azure;
+    font-size: small;
+    background-color: blue;
 }
 .title1{
     position: absolute;
     left: 50%;
     top: 50%;
+    font-size: large;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
