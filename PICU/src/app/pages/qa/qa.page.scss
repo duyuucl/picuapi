@@ -1,4 +1,14 @@
-$hero: #0072CE;
+$heroBlue: #0072CE;
+$supportBlue: #41B6E6;
+$heroBlack: #231f20;
+$heroWhite: #FFFFFF;
+$green: #00A499;
+$yellow: #FFB81C;
+$darkPink: #7C2855;
+$red: #DA291C;
+$midGrey: #768692;
+$paleGrey: #E8EDEE;
+
 
 
 .container {
@@ -8,7 +18,7 @@ $hero: #0072CE;
 }
 
 details {
-    background: $hero;
+    background: $heroBlue;
 	border: 1px solid;
 	transition: all 0.3s;
 	border-radius: 0px;
