@@ -66,6 +66,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'qa',
+        children: [
+          {
+            path: '',
+            loadChildren: () => 
+              import('../qa/qa.module').then( m => m.QAPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
