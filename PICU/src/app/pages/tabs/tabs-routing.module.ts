@@ -14,6 +14,26 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../home/home.module').then(m => m.HomePageModule)
+          },{
+            path: 'picu',
+            loadChildren: () =>
+              import('../picu/picu.module').then(m => m.PicuPageModule)
+          },{
+            path: 'yourchild',
+            loadChildren: () =>
+              import('../yourchild/yourchild.module').then(m => m.YourchildPageModule)
+          },{
+            path: 'team',
+            loadChildren: () =>
+              import('../team/team.module').then(m => m.TeamPageModule)
+          },{
+            path: 'visit',
+            loadChildren: () =>
+              import('../visit/visit.module').then(m => m.VisitPageModule)
+          },{
+            path: 'faq',
+            loadChildren: () => 
+              import('../qa/qa.module').then( m => m.QAPageModule)
           }
         ]
       },
@@ -44,8 +64,7 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../team/team.module').then(m => m.TeamPageModule)
-          }
-          , {
+          }, {
             path: 'team-detail',
             loadChildren: () => import('../team-detail/team-detail.module').then( m => m.TeamDetailPageModule)
           }

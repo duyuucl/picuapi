@@ -1,6 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>faq</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="MyAction()" href="/tabs/home">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style='text-align:center'>FAQ & FEEDBACK</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="/tabs/home">
+          <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
