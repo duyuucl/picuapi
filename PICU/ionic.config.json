@@ -1,5 +1,7 @@
 {
   "name": "PICU",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
