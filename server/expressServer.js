@@ -22,9 +22,9 @@ app.use(function(req, res, next)
 
 var con = mysql.createConnection({
     host: 'localhost',
-    port:'8080',
+    port:'3306',
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'picudb',
 });
 
@@ -63,7 +63,7 @@ con.connect(function(err) {
     app.use('/api', apiRouter);
 
     /* Open a UNIX socket, listen for connections to the specified port */
-    app.listen(config.port);
+    app.listen(3000);
 });
 
 
