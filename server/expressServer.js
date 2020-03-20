@@ -21,11 +21,11 @@ app.use(function(req, res, next)
 });
 
 var con = mysql.createConnection({
-    host: 'localhost',
-    port:'3306',
-    user: 'root',
+    host:'localhost',
+    user:'root',
+    port:3306,
     password: 'root',
-    database: 'picudb',
+    database:'picudb'
 });
 
 con.connect(function(err) {
