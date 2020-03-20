@@ -44,9 +44,6 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../team/team.module').then(m => m.TeamPageModule)
-          }, {
-            path: 'team-detail',
-            loadChildren: () => import('../team-detail/team-detail.module').then( m => m.TeamDetailPageModule)
           }
         ]
       },
@@ -67,6 +64,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () => 
               import('../qa/qa.module').then( m => m.QAPageModule)
+          }
+        ]
+      },
+      {
+        path: 'team-detail',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../team-detail/team-detail.module').then( m => m.TeamDetailPageModule)
           }
         ]
       },
