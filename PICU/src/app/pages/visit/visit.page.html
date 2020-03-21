@@ -21,59 +21,12 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card class="card-nav">
+        <ion-card class="card-nav"
+          *ngFor="let page of pages"
+          (click)="setNavigationLink(page)">
           <ion-item>
-            <ion-card-title class="sub-card-nav-title">GENERAL INFORMATION</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">VISITING HOURS</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">LOCATION</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">HOSPITAL MAP</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">SECURITY</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">PHONE</ion-card-title>
+            <ion-icon src='{{ page.icon }}'></ion-icon>
+            <ion-card-title class="sub-card-nav-title">{{ page.title }}</ion-card-title>
             <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
           </ion-item>
         </ion-card>

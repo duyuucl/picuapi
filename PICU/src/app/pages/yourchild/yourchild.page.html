@@ -21,19 +21,12 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card class="card-nav" color="primary">
+        <ion-card class="card-nav"
+          *ngFor="let page of pages"
+          (click)="setNavigationLink(page)">
           <ion-item>
-            <ion-card-title class="sub-card-nav-title">COMMON CLINICAL PROBLEMS</ion-card-title>
-            <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="card-nav" color="primary">
-          <ion-item>
-            <ion-card-title class="sub-card-nav-title">BEDSIDE EQUIPMENT</ion-card-title>
+            <ion-icon src='{{ page.icon }}'></ion-icon>
+            <ion-card-title class="sub-card-nav-title">{{ page.title }}</ion-card-title>
             <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
           </ion-item>
         </ion-card>
