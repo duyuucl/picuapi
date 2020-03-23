@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-home',
@@ -9,40 +11,32 @@ import { Router } from '@angular/router';
 
 export class HomePage {
 
-  public pages : Array<{title: string, link: string, icon: string}>;
+  public pages : any = [];
 
-  constructor(private _router : Router) { 
-    this.pages =[
-      { title : 'PICU',
-        link : 'tabs/picu',
-        icon : '../assets/PICU_Icon.svg'
-      },
-      { title : 'YOUR CHILD',
-        link : 'tabs/yourchild',
-        icon : '../assets/Your_Child_Icon.svg'
-      },
-      { title : 'TEAM',
-        link : 'tabs/team',
-        icon : '../assets/Team_Icon.svg'
-      },
-      { title : 'VISIT',
-        link : 'tabs/visit',
-        icon : '../assets/Visit_Icon.svg'
-      },
-      { title : 'SUPPORT US',
-        link : '',
-        icon : ''
-      },
-      { title : 'FAQ & FEEDBACK',
-        link : 'tabs/qa',
-        icon : ''
-      },
-    ];
-  }
+  constructor(private _router : Router, private http: HttpClient) {}
 
-  public setNavigationLink(page: any) : void
+  ionViewWillEnter() : void
+   {
+      this.load();
+   }
+
+  load()
+   {  
+      let url = "http://localhost:2000/api/navs/home" ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.pages = data;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
+
+  public setNavigationLink(param: any) : void
   {
-    this._router.navigateByUrl('/'+page.link);
+    this._router.navigateByUrl('/'+param.Nav_link);
   }
 
 }

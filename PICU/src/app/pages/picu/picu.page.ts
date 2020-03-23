@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-picu',
@@ -12,29 +13,33 @@ export class PicuPage implements OnInit {
     console.log('back button pressed');
     this.isDisabled = true;
   }
-  
-  public pages : Array<{title: string, link: string, icon: string}>;
 
-  constructor(private _router : Router) { 
-    this.pages =[
-      { title : 'CONSENT STATEMENT',
-        link : 'tabs/team-detail',
-        icon : ''
-      },
-      { title : 'DAILY ROUTINE',
-        link : 'tabs/team-detail',
-        icon : ''
-      },
-      { title : 'WARD PHILOSOPHY',
-        link : 'tabs/team-detail',
-        icon : ''
-      }
-    ];
-  }
+  public pages : any = [];
 
-  public setNavigationLink(page: any) : void
+  constructor(private _router : Router, private http: HttpClient) {}
+
+  ionViewWillEnter() : void
+   {
+      this.load();
+   }
+
+  load()
+   {  
+      let url = "http://localhost:2000/api/navs/picu" ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.pages = data;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
+
+  public setNavigationLink(param: any) : void
   {
-    this._router.navigateByUrl('/'+page.link);
+    this._router.navigateByUrl('/'+param.Nav_link);
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-yourchild',
@@ -15,24 +16,32 @@ export class YourchildPage implements OnInit {
     this.isDisabled = true;
   }
 
-  public pages : Array<{title: string, link: string, icon: string}>;
+  public pages : any = [];
 
-  constructor(private _router : Router) { 
-    this.pages =[
-      { title : 'COMMON CLINICAL CONDITIONS',
-        link : 'tabs/team-detail',
-        icon : ''
-      },
-      { title : 'PICU EQUIPMENT',
-        link : 'tabs/team-detail',
-        icon : ''
-      }
-    ];
-  }
+  constructor(private _router : Router, private http: HttpClient) {}
 
-  public setNavigationLink(page: any) : void
+  ionViewWillEnter() : void
+   {
+      this.load();
+   }
+
+  load()
+   {  
+      let url = "http://localhost:2000/api/navs/yourchild" ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.pages = data;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
+
+  public setNavigationLink(param: any) : void
   {
-    this._router.navigateByUrl('/'+page.link);
+    this._router.navigateByUrl('/'+param.Nav_link);
   }
 
   ngOnInit() {
