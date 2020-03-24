@@ -44,12 +44,30 @@ ion-toolbar {
     background-color: #ffffff;
 }
 
+.card-faq{
+    --border-color:#ffffff;
+    margin-top: 5px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
 .card-nav-title{
     font-size: 15px;
     left: 20px;
 }
 .sub-card-nav-title{
     font-size: 15px;
+}
+
+.faq-card-title{
+    text-align:center;
+    font-size: 15px;
+}
+
+.faq-card-text{
+    text-align:center;
+    font-size: 12px;
 }
 
 .header-title{

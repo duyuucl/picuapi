@@ -1,46 +1,47 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar text-center>
     <ion-buttons slot="start">
-        <ion-back-button slot="start"></ion-back-button>
-      </ion-buttons>
-    <ion-title style='text-align:center'>Q&A</ion-title>
+      <ion-button (click)="MyAction()" href="/tabs/home">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="header-title">FAQ & FEEDBACK</ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/home">
+      <ion-button href="/tabs/home">
           <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
-    <details class="question list">
-      <summary>Question 1</summary>
-      <p>Reply</p>
-    </details>
-    <details class="question list">
-      <summary>Question 2</summary>		
-      <p>Reply</p>
-    </details>
-    <details class="question list">
-      <summary>Question 3</summary>		
-      <p>Reply</p>
-    </details>
+<ion-content fullscreen>
+  <section>
+    <img class="logo" src="../assets/photos/logo.png" />
+  </section>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="card-faq" *ngFor="let q of questions">
+          <ion-card-header>
+           <ion-card-title class="faq-card-title">{{ q.question }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="faq-card-text">{{ q.reply }}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-
-  </div>
   <ion-card>
     <ion-card-header>
-        <ion-card-title style='text-align:center'>Feedback</ion-card-title>
-      </ion-card-header>
-    <ion-card-content>
-        <ion-textarea placeholder="Enter your feedback here..."></ion-textarea>
-      </ion-card-content>
+      <ion-card-title class="faq-card-title">FEEDBACK</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="faq-card-text">
+      If you have any further questions and/or feedback, you can send it to us here. Please note that you will not receive a direct response but we will make sure to incorporate your questions and feedback into the next versions of the app.
+      <ion-textarea placeholder="Please enter your question(s) and/or feedback here and press 'submit'"></ion-textarea>
+    </ion-card-content>
+    <ion-button expand="full "fill="outline" size="small" color="medium" shape="round">
+      Submit
+    </ion-button>
   </ion-card>
-  <div margin-vertical text-right> 
-    <ion-button expand="full" fill="solid">
-      <ion-icon name="add"></ion-icon>Submit
-      </ion-button>
-  </div>
 
 </ion-content>
