@@ -18,7 +18,23 @@
 <ion-content>
   <ion-card 
     *ngFor="let content of contents">
-    <img src="{{ content.image }}" />
+    <ion-slides pager="true">
+      <ng-container *ngIf="content.image1">
+        <ion-slide>
+          <img src="{{ content.image1 }}" />
+        </ion-slide>
+      </ng-container>
+      <ng-container *ngIf="content.image2">
+        <ion-slide>
+          <img src="{{ content.image2 }}" />
+        </ion-slide>
+      </ng-container>
+      <ng-container *ngIf="content.image3">
+        <ion-slide>
+          <img src="{{ content.image3 }}" />
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
     <ion-card-content> {{ content.text }} </ion-card-content>
   </ion-card>
 </ion-content>
