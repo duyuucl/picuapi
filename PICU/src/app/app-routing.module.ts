@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'qa',
     loadChildren: () => import('./pages/qa/qa.module').then( m => m.QAPageModule)
+  },
+  {
+    path: 'navigation',
+    loadChildren: () => import('./pages/navigation/navigation.module').then( m => m.NavigationPageModule)
   }
 ];
 @NgModule({

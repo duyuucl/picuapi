@@ -78,6 +78,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'navigation',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../navigation/navigation.module').then( m => m.NavigationPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
