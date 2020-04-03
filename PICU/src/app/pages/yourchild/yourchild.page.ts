@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
 
 @Component({
@@ -39,10 +39,15 @@ export class YourchildPage implements OnInit {
       });
    }
 
-  public setNavigationLink(param: any) : void
-  {
-    this._router.navigateByUrl('/'+param.Nav_link);
-  }
+   public setNavigationLink(param: any) : void
+   {
+    let navExtras : NavigationExtras = {
+       state: {
+          parent_id: param.id
+       }
+    }
+     this._router.navigate(['/'+param.Nav_link], navExtras);
+   }
 
   ngOnInit() {
   }

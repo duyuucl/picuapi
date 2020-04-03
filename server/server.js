@@ -52,7 +52,7 @@ connection.connect(function(error) {
         });
 
         apiRouter.get('/navs/yourchild', function(req, res){
-            let sql = 'SELECT Nav_name, Nav_link FROM navigation WHERE Page_id = "3";';  
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "3" AND Nav_name = Page_name;';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
@@ -63,7 +63,7 @@ connection.connect(function(error) {
         });
 
         apiRouter.get('/navs/team', function(req, res){
-            let sql = 'SELECT Nav_name, Nav_link FROM navigation WHERE Page_id = "4";';  
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "4" AND Nav_name = Page_name;';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
@@ -74,7 +74,7 @@ connection.connect(function(error) {
         });
 
         apiRouter.get('/navs/visit', function(req, res){
-            let sql = 'SELECT Nav_name, Nav_link FROM navigation WHERE Page_id = "5";';  
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "5" AND Nav_name = Page_name;';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
