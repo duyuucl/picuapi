@@ -3,10 +3,10 @@ var mysql = require('mysql');
 var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
+var fs = require('fs');
 
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
-
 app.all("*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-control-Allow-Headers", "xCors");
@@ -16,12 +16,14 @@ app.all("*", function(req, res, next) {
 })
 
 var connection = mysql.createConnection({
-
-    host:'localhost',
-    user:'root',
-    port:3306,
-    password: 'root',
-    database:'picudb'
+    host: "picuserver.mysql.database.azure.com", 
+    user: "admin0@picuserver", 
+    password: 'picu1Q2W', 
+    database: 'picudb', 
+    port: 3306,
+    ssl:{
+        ca:fs.readFileSync('BaltimoreCyberTrustRoot.crt.pem')
+    }
 });
 
 connection.connect(function(error) {
