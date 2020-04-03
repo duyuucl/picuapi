@@ -17,6 +17,8 @@ export class TeamDetailPage implements OnInit {
 
   id : any;
 
+  public contents : any = [];
+
   constructor(private route: ActivatedRoute, private _router: Router, private http: HttpClient) {
     this.route.queryParams.subscribe(params => {
       if (this._router.getCurrentNavigation().extras.state) {
@@ -24,6 +26,25 @@ export class TeamDetailPage implements OnInit {
       }
     });
   }
+
+  ionViewWillEnter() : void
+   {
+      this.load();
+   }
+
+  load()
+   {  
+      let url = "http://localhost:2000/api/content/"+ this.id ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.contents = data;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
 
 /*
   public contents : Array<{image1: string, image2: string, image3: string, text: string, parent: number}>;

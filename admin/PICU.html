@@ -86,12 +86,27 @@
 										<li><a href="Edit PICU.html">Ward Philosophy</a></li>
 									</ul>
 								</li>
+								<table id = "exampleTable" class="table table-bordered table-striped table-hover users-table mb-2">
+									<thead>
+									  <tr>
+										  <th>Name</th>
+										  <th>link</th>
+									  </tr>
+									</thead>
+									<tfoot>
+									  <tr>
+										  <th>Name</th>
+										  <th>link</th>
+									  </tr>
+									</tfoot>
+									<tbody></tbody>
+								  </table>
 							</ul>
 						 </div>
 					</div>
 		  		</div>
-		  	</div>
-
+			</div>
+			  
 		  	<div class="content-box-large">
 				I guess I need to find a way to pull data to present here and put a text editor here
 				<br /><br />
@@ -145,5 +160,15 @@
     <script src="js/custom.js"></script>
     <script src="js/editors.js"></script>
 	<script src="vendors/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	<script>
+		$(document).ready(function() {
+		  $("#exampleTable").DataTable({
+			scrollY: 400,
+			processing: true,
+			serverSide: true,
+			ajax: "/data"
+		  });
+		});
+	</script>
   </body>
 </html>

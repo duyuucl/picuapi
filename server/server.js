@@ -41,7 +41,7 @@ connection.connect(function(error) {
         });
 
         apiRouter.get('/navs/picu', function(req, res){
-            let sql = 'SELECT Nav_name, Nav_link FROM navigation WHERE Page_id = "2";';  
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "2" AND Nav_name = Page_name;';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
@@ -75,6 +75,18 @@ connection.connect(function(error) {
 
         apiRouter.get('/navs/visit', function(req, res){
             let sql = 'SELECT Nav_name, Nav_link FROM navigation WHERE Page_id = "5";';  
+
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json(results);
+            });
+        });
+
+        apiRouter.get('/content/:parentId', function(req, res){
+            var parentId = req.params.parentId;
+            let sql = 'SELECT Image1_path, Image2_path, Image3_path, Text FROM content WHERE Page_id = "' + parentId + '";';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
