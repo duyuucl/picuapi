@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-team-detail',
@@ -14,9 +15,18 @@ export class TeamDetailPage implements OnInit {
     this.isDisabled = true;
   }
 
-  public contents : Array<{image1: string, image2: string, image3: string, text: string, parent: number}>;
+  id : any;
 
-  // This bit should take the information from the DB query results that is relevant to a specific page (using page ID)
+  constructor(private route: ActivatedRoute, private _router: Router, private http: HttpClient) {
+    this.route.queryParams.subscribe(params => {
+      if (this._router.getCurrentNavigation().extras.state) {
+        this.id= this._router.getCurrentNavigation().extras.state.parent_id;
+      }
+    });
+  }
+
+/*
+  public contents : Array<{image1: string, image2: string, image3: string, text: string, parent: number}>;
 
   constructor(private _router : Router) { 
     this.contents =[
@@ -33,7 +43,7 @@ export class TeamDetailPage implements OnInit {
   {
     this._router.navigateByUrl('/'+page.link);
   }
-
+*/
   ngOnInit() {
   }
 
