@@ -3,6 +3,5 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/90d42b8b-06af-4c71-b864-2ead6822eec7/resourceGroups/0067team17/providers/Microsoft.Web/sites/picu",
     "appService.deploySubpath": ""
 }
