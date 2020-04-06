@@ -3,7 +3,6 @@ var mysql = require('mysql');
 var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
-var port = process.env.port || 3000;
 
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
@@ -18,10 +17,10 @@ app.all("*", function(req, res, next) {
 
 var connection = mysql.createConnection({
 
-    host:'picuserver.mysql.database.azure.com',
-    user:'admin0@picuserver',
+    host:'localhost',
+    user:'root',
     port:3306,
-    password: 'picu+2020',
+    password: 'root',
     database:'picudb'
 });
 
@@ -110,7 +109,7 @@ connection.connect(function(error) {
         });
 
         app.use('/api', apiRouter);
-        app.listen(port)
+        app.listen(2000)
     }
 });
 
