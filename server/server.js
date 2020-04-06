@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
+var port = process.env.port || 3000;
 
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
@@ -109,7 +110,7 @@ connection.connect(function(error) {
         });
 
         app.use('/api', apiRouter);
-        app.listen(2000)
+        app.listen(port)
     }
 });
 
