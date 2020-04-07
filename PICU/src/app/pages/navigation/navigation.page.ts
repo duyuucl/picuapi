@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-navigation',
@@ -13,43 +14,61 @@ export class NavigationPage implements OnInit {
     console.log('back button pressed');
     this.isDisabled = true;
   }
-  
-  // I think here there should be two queries - if there is anything for the page in the content table, that will
-  // be displayed first and then we display the menu from the navigation table
+  id : any;
+  public pages : any = [];
+  public contents : any = [];
 
-  public contents : Array<{image: string, text: string, parent: number}>;
-  public pages : Array<{title: string, link: string, icon: string}>;
-
-  constructor(private _router : Router) { 
-    this.contents =[
-      { image : '../assets/Team_Pic.jpg',
-        text : 'Text with relevant contents',
-        parent : 1
+  constructor(private route: ActivatedRoute, private _router : Router, private http: HttpClient) {
+   this.route.queryParams.subscribe(params => {
+      if (this._router.getCurrentNavigation().extras.state) {
+        this.id= this._router.getCurrentNavigation().extras.state.parent_id;
       }
-    ];
-
-    this.pages =[
-      { title : 'TOPIC 1',
-        link : 'tabs/team-detail',
-        icon : ''
-      },
-      { title : 'TOPIC 2',
-        link : 'tabs/team-detail',
-        icon : ''
-      },
-      { title : 'TOPIC 3',
-        link : 'tabs/team-detail',
-        icon : ''
-      }
-    ];
+    });
   }
 
-  public setNavigationLink(page: any) : void
-  {
-    this._router.navigateByUrl('/'+page.link);
-  }
+  ionViewWillEnter() : void
+   {
+      this.load();
+      this.load_menu();
+   }
 
+   load()
+   {  
+      let url = "http://localhost:2000/api/content/"+ this.id ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.contents = data;
+         } else {
+            console.log('Error');
+         }
 
+      });
+   }
+
+   load_menu()
+   {  
+      let url = "http://localhost:2000/api/menu/"+ this.id ;
+      this.http.get(url).subscribe(data_menu => {
+         if(data_menu)
+         {
+            this.pages = data_menu;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
+
+   public setNavigationLink(param: any) : void
+   {
+    let navExtras : NavigationExtras = {
+       state: {
+          parent_id: param.id
+       }
+    }
+     this._router.navigate(['/'+param.Nav_link], navExtras);
+   }
   ngOnInit() {
   }
 
