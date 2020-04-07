@@ -20,7 +20,7 @@ var connection = mysql.createConnection({
 
     host:'localhost',
     user:'root',
-    port: 8889,
+    port:3306,
     password: 'root',
     database:'picudb'
 });
