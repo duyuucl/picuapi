@@ -27,7 +27,7 @@ export class YourchildPage implements OnInit {
 
   load()
    {  
-      let url = "http://localhost:2000/api/navs/yourchild" ;
+      let url = "https://picu.azurewebsites.net" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {

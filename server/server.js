@@ -17,10 +17,10 @@ app.all("*", function(req, res, next) {
 
 var connection = mysql.createConnection({
 
-    host:'localhost',
-    user:'root',
+    host:'picuserver.mysql.database.azure.com',
+    user:'admin0@picuserver',
     port:3306,
-    password: 'root',
+    password: 'picu+2020',
     database:'picudb'
 });
 
