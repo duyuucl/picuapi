@@ -84,9 +84,32 @@ connection.connect(function(error) {
             });
         });
 
+        apiRouter.get('/navs/qa', function(req, res){
+            let sql = 'SELECT Q_title, Q_answer FROM faq;';  
+
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json(results);
+            });
+        });
+
         apiRouter.get('/content/:parentId', function(req, res){
             var parentId = req.params.parentId;
             let sql = 'SELECT Image1_path, Image2_path, Image3_path, Text FROM content WHERE Page_id = "' + parentId + '";';  
+
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json(results);
+            });
+        });
+
+        apiRouter.get('/menu/:parentId', function(req, res){
+            var parentId = req.params.parentId;
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "' + parentId + '" AND Nav_name = Page_name;';  
 
             connection.query(sql, (err, results) => {
                 if (err) {
