@@ -15,14 +15,26 @@ app.all("*", function(req, res, next) {
     next();
 })
 
+/*
 var connection = mysql.createConnection({
 
     host:'localhost',
     user:'root',
-    port:3306,
+    port: 8889,
     password: 'root',
     database:'picudb'
 });
+*/
+
+var connection = mysql.createConnection({
+
+    host:'picuserver.mysql.database.azure.com',
+    user:'admin0@picuserver',
+    port: 3306,
+    password: 'picu+2020',
+    database:'picudb'
+});
+
 
 connection.connect(function(error) {
     if(!!error) {
