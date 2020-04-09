@@ -3,7 +3,6 @@ const app = express();
 const session = require('express-session');
 const pageRouter = require('./routes/pages')
 
-
 /*
 // mysql connection
 var connection = mysql.createConnection({

@@ -8,6 +8,8 @@ const user = new User();
 router.get('/login', (req, res, next) => res.render('login.ejs'));
 //home page
 router.get('/home', (req, res, next) => res.render('home.ejs'));
+//picu page
+router.get('/picu', (req, res, next) => res.render('picu.ejs'));
 
 //post login data
 router.post('/login', (req, res, next) => {

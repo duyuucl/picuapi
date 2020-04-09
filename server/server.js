@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
-var fs = require('fs');
+
 
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
@@ -136,7 +136,6 @@ connection.connect(function(error) {
         apiRouter.get('/:navName', function(req, res){
             var navName = req.params.navName;
             let sql = 'SELECT Nav_name, Nav_link, Icon_path FROM navigation WHERE Nav_name = "' + navName + '";';  
-
             connection.query(sql, (err, results) => {
                 if (err) {
                 console.dir(err);
