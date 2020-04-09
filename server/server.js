@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
+var port = process.env.port || 3000; //according to the slides, this means port is based on the environment, or 3000
 
 
 app.use(bodyParser.json({limit: '10mb'}));
@@ -32,7 +33,7 @@ var connection = mysql.createConnection({
 
     host:'picuserver.mysql.database.azure.com',
     user:'admin0@picuserver',
-    port: 3306,
+    port: 3306,    
     password: 'picu+2020',
     database:'picudb'
 });
@@ -145,7 +146,7 @@ connection.connect(function(error) {
         });
 
         app.use('/api', apiRouter);
-        app.listen(2000)
+        app.listen(port)
     }
 });
 
