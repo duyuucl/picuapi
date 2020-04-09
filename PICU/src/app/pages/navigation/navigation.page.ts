@@ -34,7 +34,7 @@ export class NavigationPage implements OnInit {
 
    load()
    {  
-      let url = "http://localhost:2000/api/content/"+ this.id ;
+      let url = "https://picu.azurewebsites.net/api/content/"+ this.id ;
       this.http.get(url).subscribe(data => {
          if(data)
          {
@@ -48,7 +48,7 @@ export class NavigationPage implements OnInit {
 
    load_menu()
    {  
-      let url = "http://localhost:2000/api/menu/"+ this.id ;
+      let url = "https://picu.azurewebsites.net/api/menu/"+ this.id ;
       this.http.get(url).subscribe(data_menu => {
          if(data_menu)
          {
