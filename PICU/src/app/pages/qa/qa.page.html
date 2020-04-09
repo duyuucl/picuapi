@@ -23,9 +23,9 @@
       <ion-col>
         <ion-card class="card-faq" *ngFor="let q of questions">
           <ion-card-header>
-           <ion-card-title class="faq-card-title">{{ q.question }}</ion-card-title>
+           <ion-card-title class="faq-card-title">{{ q.Q_title }}</ion-card-title>
           </ion-card-header>
-          <ion-card-content class="faq-card-text">{{ q.reply }}</ion-card-content>
+          <ion-card-content class="faq-card-text">{{ q.Q_answer }}</ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

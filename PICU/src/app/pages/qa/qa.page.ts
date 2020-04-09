@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-qa',
@@ -14,26 +14,28 @@ export class QAPage implements OnInit {
     this.isDisabled = true;
   }
 
-  public questions : Array<{question: string, reply: string}>;
+  public questions : any = [];
 
-  constructor(private _router : Router) { 
-    this.questions =[
-      { question : 'What is PICU?',
-        reply : 'PICU is an abbreviation for Paedriatic Intensive Care Unit.'
-      },
-      { question : 'Question 2',
-      reply : 'Reply to question 2'
-      },
-      { question : 'Question 3',
-      reply : 'Reply to question 3'
-      }
-    ];
-  }
+  constructor(private http: HttpClient) {}
 
-  public setNavigationLink(page: any) : void
-  {
-    this._router.navigateByUrl('/'+page.link);
-  }
+  ionViewWillEnter() : void
+   {
+      this.load();
+   }
+
+  load()
+   {  
+      let url = "http://localhost:2000/api/navs/qa" ;
+      this.http.get(url).subscribe(data => {
+         if(data)
+         {
+            this.questions = data;
+         } else {
+            console.log('Error');
+         }
+
+      });
+   }
 
   ngOnInit() {
   }

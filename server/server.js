@@ -4,9 +4,9 @@ var app = express();
 var apiRouter = express.Router();
 var bodyParser = require("body-parser");
 
+
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
-
 app.all("*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-control-Allow-Headers", "xCors");
@@ -15,14 +15,28 @@ app.all("*", function(req, res, next) {
     next();
 })
 
+/*
+var connection = mysql.createConnection({
+    host: "picuserver.mysql.database.azure.com", 
+    user: "admin0@picuserver", 
+    password: 'picu1Q2W', 
+    database: 'picudb', 
+    port: 3306,
+    ssl:{
+        ca:fs.readFileSync('BaltimoreCyberTrustRoot.crt.pem')
+    }
+});
+*/
+
 var connection = mysql.createConnection({
 
     host:'picuserver.mysql.database.azure.com',
     user:'admin0@picuserver',
-    port:3306,
+    port: 3306,
     password: 'picu+2020',
     database:'picudb'
 });
+
 
 connection.connect(function(error) {
     if(!!error) {
@@ -84,6 +98,17 @@ connection.connect(function(error) {
             });
         });
 
+        apiRouter.get('/navs/qa', function(req, res){
+            let sql = 'SELECT Q_title, Q_answer FROM faq;';  
+
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json(results);
+            });
+        });
+
         apiRouter.get('/content/:parentId', function(req, res){
             var parentId = req.params.parentId;
             let sql = 'SELECT Image1_path, Image2_path, Image3_path, Text FROM content WHERE Page_id = "' + parentId + '";';  
@@ -96,10 +121,21 @@ connection.connect(function(error) {
             });
         });
 
+        apiRouter.get('/menu/:parentId', function(req, res){
+            var parentId = req.params.parentId;
+            let sql = 'SELECT Nav_name, Nav_link, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "' + parentId + '" AND Nav_name = Page_name;';  
+
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json(results);
+            });
+        });
+
         apiRouter.get('/:navName', function(req, res){
             var navName = req.params.navName;
             let sql = 'SELECT Nav_name, Nav_link, Icon_path FROM navigation WHERE Nav_name = "' + navName + '";';  
-
             connection.query(sql, (err, results) => {
                 if (err) {
                 console.dir(err);

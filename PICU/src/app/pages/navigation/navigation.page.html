@@ -22,8 +22,8 @@
 
   <ion-card 
     *ngFor="let content of contents">
-    <img src="{{ content.image }}" />
-    <ion-card-content> {{ content.text }} </ion-card-content>
+    <img src="{{ content.Image1_path }}" />
+    <ion-card-content> {{ content.Text }} </ion-card-content>
   </ion-card>
 
   <ion-grid>
@@ -33,7 +33,7 @@
           *ngFor="let page of pages"
           (click)="setNavigationLink(page)">
           <ion-item>
-            <ion-card-title class="sub-card-nav-title">{{ page.title }}</ion-card-title>
+            <ion-card-title class="sub-card-nav-title">{{ page.Nav_name }}</ion-card-title>
             <ion-icon name="chevron-forward-outline" slot='end'></ion-icon>
           </ion-item>
         </ion-card>
