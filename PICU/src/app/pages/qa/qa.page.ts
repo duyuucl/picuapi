@@ -25,7 +25,7 @@ export class QAPage implements OnInit {
 
   load()
    {  
-      let url = "http://localhost:2000/api/navs/qa" ;
+      let url = "https://picuserver.azurewebsites.net/api/navs/qa" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {

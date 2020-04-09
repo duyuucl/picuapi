@@ -34,7 +34,7 @@ export class TeamDetailPage implements OnInit {
 
   load()
    {  
-      let url = "https://picu.azurewebsites.net/api/content/"+ this.id ;
+      let url = "https://picuserver.azurewebsites.net/api/content/"+ this.id ;
       this.http.get(url).subscribe(data => {
          if(data)
          {

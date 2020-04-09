@@ -27,7 +27,7 @@ export class VisitPage implements OnInit {
 
   load()
    {  
-      let url = "https://picu.azurewebsites.net/api/navs/visit" ;
+      let url = "https://picuserver.azurewebsites.net/api/navs/visit" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {

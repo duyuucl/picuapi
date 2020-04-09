@@ -22,7 +22,7 @@ export class HomePage {
 
   load()
    {  
-      let url = "https://picu.azurewebsites.net/api/navs/home" ;
+      let url = "https://picuserver.azurewebsites.net/api/navs/home" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {
