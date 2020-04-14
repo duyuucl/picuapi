@@ -25,7 +25,7 @@ export class TeamPage implements OnInit {
 
   load()
    {  
-      let url = "https://picuserver.azurewebsites.net/api/navs/team" ;
+      let url = "https://picuapi.azurewebsites.net/api/navs/team" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {

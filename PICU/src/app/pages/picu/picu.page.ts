@@ -25,7 +25,7 @@ export class PicuPage implements OnInit {
 
   load()
    {  
-      let url = "https://picuserver.azurewebsites.net/api/navs/picu" ;
+      let url = "https://picuapi.azurewebsites.net/api/navs/picu" ;
       this.http.get(url).subscribe(data => {
          if(data)
          {
