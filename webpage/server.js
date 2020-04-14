@@ -39,6 +39,8 @@ app.use(session({
     }
 }));
 
+//css
+app.use('/public', express.static('public'));
 
 // Routes
 app.use('/', pageRouter);
