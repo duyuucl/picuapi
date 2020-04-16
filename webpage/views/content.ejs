@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+<div class="main_content">
+    <div class="header">
+        <h2>CONSENT page</h2>
+    </div>
+    <div class="card">
+
+        <div class="slider slider-middle">
+            <div class="slides">
+                <input type="radio" name="r" id="r1" checked>
+                <input type="radio" name="r" id="r2">
+                <input type="radio" name="r" id="r3">
+                <div class="slide s1">
+                    <img src="/public/images/img3.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="/public/images/img2.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="/public/images/img1.png" alt="">
+                </div>
+            </div>
+
+            <div class="img-navs">
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+                <label for="r3" class="bar"></label>
+            </div>
+        </div>
+
+        <div class="card-text">
+            <% for (var content of contents) { %>
+            <p> <%= content.Text %> </p>
+            <% } %>
+        </div>
+        <form action="/edit-content" method="GET">
+        <button class="edit-button">Edit</button>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

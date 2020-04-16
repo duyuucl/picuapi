@@ -1,3 +1,4 @@
+/* main */
 *{
   margin: 0;
   padding: 0;
@@ -37,7 +38,7 @@ body{
 }
 .btn{
   display: block;
-  padding: 16px 20px;
+  padding: 14px 20px;
   background:#0072CE;
   color: white;
   position: relative;
@@ -63,7 +64,7 @@ body{
 }
 .smenu a{
   display: block;
-  padding: 16px 26px;
+  padding: 11px 26px;
   color: white;
   font-size: 14px;
   margin: 4px 0;
@@ -84,16 +85,18 @@ body{
   opacity: 1;
 }
 .item:target .smenu{
-  max-height: 10em;
+  max-height: 25em;
 }
 
+
+/* home page */
 .middle .main_content{
   width: 100%;
   margin-left: 250px;
 }
 
 .middle .main_content .header{
-  padding: 30px;
+  padding: 25.3px;
   background: #768692;
   color: white;
   border-bottom: 1px solid #e0e4e8;
@@ -107,4 +110,123 @@ body{
 
 .middle .main_content .info div{
   margin-bottom: 20px;
+}
+
+/* content page */
+.card{
+  position: absolute;
+  top: 120%;
+  left: 40%;
+  transform: (-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+}
+.card-text{
+  grid-area: text;
+  color:black;
+  font-size:15px;
+  font-weight: 300;
+  margin-top: 25px;
+  margin-left:20px;
+  margin-right:20px;
+  margin-bottom:20px;
+}
+
+.edit-button{
+  width: 400px;
+  height: 40px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 10px;
+}
+.slider{
+  border-radius: 10px;
+  width:400px;
+  height:250px;
+  overflow: hidden;
+  grid-area: image;
+}
+.slider-middle{
+  top: 50%;
+  left: 50%;
+  transform: (-50%, -50%);
+}
+
+.img-navs {
+  position: relative;
+  bottom: 20px;
+  left: 80%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.bar{
+  width: 40px;
+  height: 10px;
+  border: 1px solid #fff;
+  margin: 5px;
+  cursor:pointer;
+  transition: 0.4s;
+}
+.bar:hover{
+  background: #fff;
+}
+
+input[name="r"]{
+  position: absolute;
+  visibility: hidden;
+}
+
+.slides{
+  width: 500%;
+  height: 100%;
+  display: flex;
+}
+
+.slide{
+  width: 20%;
+  transition: 0.6s;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+
+
+#r1:checked ~ .s1{
+  margin-left: 0;
+}
+#r2:checked ~ .s1{
+  margin-left: -20%;
+}
+#r3:checked ~ .s1{
+  margin-left: -40%;
+}
+
+/* edit-content page */
+.text-editor {
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 750px;
+  height: 400px;
+}
+
+.upload-btn {
+  margin-top: 2%;
+  width: 100px;
+  height: 40px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 10px;
+  border-color: #E8EDEE;
+}
+
+.upload-img {
+  position: relative;
+  left: 5%;
+  top: 30px;
 }
