@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+<div class="main_content">
+    <div class="header">
+        <h2>Edit Content</h2>
+    </div>
+
+    <form action="/edit-content" method="post" enctype="multipart/form-data">
+        <di class="upload-img">
+            <div class="upload-img1">
+                <label for="file">Upload the first image:</label>
+                <input type="file" name="file1"/>
+            </div>
+            <div class="upload-img2">
+                <label for="file">Upload the second image:</label>
+                <input type="file" name="file2"/>
+            </div>
+            <div class="upload-img3">
+                <label for="file">Upload the third image:</label>
+                <input type="file" name="file3"/>
+            </div>
+        </di class="upload-img">
+        <div class="text-editor">
+            <textarea name="content"></textarea>
+            <button type="submit" name="submit" class="upload-btn"> Submit</button>
+        </div>
+    </form>
+</div>
+<script src="../public/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content')
+</script>
+
+<%- include('partials/footer.ejs') %>
