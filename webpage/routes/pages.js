@@ -18,6 +18,9 @@ router.get('/picu', (req, res, next) => res.render('picu.ejs'));
 router.get('/content', (req, res, next) => res.render('content.ejs'));
 //edit content
 router.get('/edit-content', (req, res, next) => res.render('edit-content.ejs'));
+//user page
+router.get('/user', (req, res, next) => res.render('user.ejs'));
+
 
 
 
