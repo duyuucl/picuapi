@@ -10,9 +10,15 @@
     <div class="middle">
       <div class="menu">
         <p class="title">HOME</p>
+
         <li class="item" id='PICU'>
           <a href="#PICU" class="btn">PICU</a>
           <div class="smenu">
+
+          <% for (var nav of picuNav) {%>
+            <a href="#"><%=nav.Nav_name%></a>
+          <%}%>
+
             <a href="#">CONSENT</a>
             <a href="#">DAILY ROUTINE</a>
             <a href="#">WARD PHILOSOPHY</a>
