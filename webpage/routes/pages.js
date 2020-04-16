@@ -16,9 +16,11 @@ router.get('/home', (req, res, next) => res.send('home.ejs', {picuNav}));
 router.get('/picu', (req, res, next) => res.render('picu.ejs'));
 //content page
 router.get('/content', (req, res, next) => res.render('content.ejs'));
-
 //edit content
 router.get('/edit-content', (req, res, next) => res.render('edit-content.ejs'));
+//user page
+router.get('/user', (req, res, next) => res.render('user.ejs'));
+
 
 
 //sidebar navigation
