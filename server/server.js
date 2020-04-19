@@ -145,6 +145,18 @@ connection.connect(function(error) {
             });
         });
 
+        apiRouter.post('/navs/qa', function(req, res){
+            var userName = req.body.name,
+                userFeedback = req.body.feedback;
+            let sql = 'INSERT INTO feedback(user_name, feedback) VALUES ("' + userName + '", "' + userFeedback + '");';  
+            connection.query(sql, (err, results) => {
+                if (err) {
+                console.dir(err);
+                }
+                res.json({ message: 'Row successfully inserted' });
+            });
+        });
+
         app.use('/api', apiRouter);
         app.listen(port)
     }
