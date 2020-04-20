@@ -3,25 +3,34 @@
     <div class="header">
         <h2>Edit Content</h2>
     </div>
+    <p><%= typeof msg != 'undefined' ? msg : '' %></p>
+    <form action="/edit-content/upload-img1_8" method="POST" enctype="multipart/form-data">
+        <div class="upload-img1">
+            <label for="img1">Upload the first image:</label>
+            <input type="file" name="img1"/>
+            <button type="submit" name="submit" class="upload-btn">Upload</button>
+        </div>
+    </form>
+    
+    <form action="/edit-content/upload-img2_8" method="POST" enctype="multipart/form-data">
+        <div class="upload-img2">
+            <label for="img2">Upload the second image:</label>
+            <input type="file" name="img2"/>
+            <button type="submit" name="submit" class="upload-btn">Upload</button>
+        </div>
+    </form>
 
-    <form action="/edit-content" method="post" enctype="multipart/form-data">
-        <di class="upload-img">
-            <div class="upload-img1">
-                <label for="file">Upload the first image:</label>
-                <input type="file" name="file1"/>
-            </div>
-            <div class="upload-img2">
-                <label for="file">Upload the second image:</label>
-                <input type="file" name="file2"/>
-            </div>
-            <div class="upload-img3">
-                <label for="file">Upload the third image:</label>
-                <input type="file" name="file3"/>
-            </div>
-        </di class="upload-img">
+    <form action="/edit-content/upload-img3_8" method="POST" enctype="multipart/form-data">
+        <div class="upload-img3">
+            <label for="img3">Upload the third image:</label>
+            <input type="file" name="img3"/>
+            <button type="submit" name="submit" class="upload-btn">Upload</button>
+        </div>
+    </form>
+    <form action="/upload-text" method="POST" enctype="multipart/form-data">
         <div class="text-editor">
             <textarea name="content"></textarea>
-            <button type="submit" name="submit" class="upload-btn"> Submit</button>
+            <button type="submit" name="submit" class="upload-btn">Upload</button>
         </div>
     </form>
 </div>
