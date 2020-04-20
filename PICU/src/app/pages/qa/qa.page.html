@@ -37,9 +37,22 @@
     </ion-card-header>
     <ion-card-content class="faq-card-text">
       If you have any further questions and/or feedback, you can send it to us here. Please note that you will not receive a direct response but we will make sure to incorporate your questions and feedback into the next versions of the app.
-      <ion-textarea placeholder="Please enter your question(s) and/or feedback here and press 'submit'"></ion-textarea>
+      <form [formGroup] = 'form'>
+        <ion-list>
+          <ion-item>
+            <ion-label>Your name:</ion-label>
+            <ion-input type="text" [formControl]="form.controls['name']"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Your feedback / question(s):</ion-label>
+            <ion-input type="text" [formControl]="form.controls['feedback']"></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
     </ion-card-content>
-    <ion-button expand="full "fill="outline" size="small" color="medium" shape="round">
+    <ion-button expand="full "fill="outline" size="small" color="medium" shape="round" 
+    [disabled]="!form.valid"
+    (click)="saveDetails(form.value)">
       Submit
     </ion-button>
   </ion-card>

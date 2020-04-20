@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidatorsService } from 'src/app/services/validators.service';
 
 @Component({
   selector: 'app-qa',
@@ -15,8 +17,16 @@ export class QAPage implements OnInit {
   }
 
   public questions : any = [];
+  public form : FormGroup;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public formBuilder: FormBuilder, private _valid: ValidatorsService ) {
+     
+      this.form = formBuilder.group({
+         'name': ['', Validators.required, _valid.nameValid],
+         'feedback' : ['', Validators.required]
+      });
+
+  }
 
   ionViewWillEnter() : void
    {
@@ -35,6 +45,14 @@ export class QAPage implements OnInit {
          }
 
       });
+   }
+
+   saveDetails(value : any) : void
+   {
+      let url = "https://picuapi.azurewebsites.net/api/navs/qa" ;
+      this.http.post(url, {name: value.name, feedback: value.feedback}).subscribe(data =>{
+         console.log(data);
+   });
    }
 
   ngOnInit() {
