@@ -132,7 +132,7 @@ router.post('/login', (req, res, next) => {
 });
 
 //get content data
-router.get('/content_:parentId', (req, res, next) => {
+router.get('/content/:parentId', (req, res, next) => {
     var parentId = req.params.parentId;
     let sql = 'SELECT Image1_path, Image2_path, Image3_path, Text FROM content WHERE Page_id = "' + parentId + '";';
     pool.query(sql, (err, contents) => {

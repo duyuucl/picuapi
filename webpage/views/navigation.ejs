@@ -1,8 +1,20 @@
 <%- include('partials/header.ejs') %>
     <div class="main_content">
-        <% for (var nav of navs) { %>
-            <a> <%= nav.Nav_name %> </a>
-            <a> <%= nav.id %> </a>
-        <% } %>
+        <div class="header">
+            <h2>Tab Menu</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-text">
+                <p>You can find the pages listed under this tab below. Please select a page you want to review:</p>
+            </div>
+            <div class="card-text">
+                <% for (var nav of navs) { %>
+                    <li class="item">
+                        <a href='/content/<%= nav.id %>'> <%= nav.Nav_name %> </a>
+                    </li>
+                <% } %>
+            </div>            
+        </div>
     </div>
 <%- include('partials/footer.ejs') %>
