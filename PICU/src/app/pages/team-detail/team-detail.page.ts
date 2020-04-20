@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-team-detail',
@@ -19,7 +20,7 @@ export class TeamDetailPage implements OnInit {
 
   public contents : any = [];
 
-  constructor(private route: ActivatedRoute, private _router: Router, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private _router: Router, private http: HttpClient, private domSanitizer: DomSanitizer) {
     this.route.queryParams.subscribe(params => {
       if (this._router.getCurrentNavigation().extras.state) {
         this.id= this._router.getCurrentNavigation().extras.state.parent_id;
@@ -66,6 +67,11 @@ export class TeamDetailPage implements OnInit {
   }
 */
   ngOnInit() {
+    this.contents.Text = this.getInnerHTMLValue();
+  }
+
+  getInnerHTMLValue() {
+    return this.domSanitizer.bypassSecurityTrustHtml(this.contents.Text);
   }
 
 }

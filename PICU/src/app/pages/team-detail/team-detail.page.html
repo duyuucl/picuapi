@@ -39,6 +39,8 @@
         </ion-slide>
       </ng-container>
     </ion-slides>
-    <ion-card-content> {{ content.Text }} </ion-card-content>
+    <ion-card-content>
+      <pre [innerHTML]="content.Text" wrap></pre>
+      </ion-card-content>
   </ion-card>
 </ion-content>
