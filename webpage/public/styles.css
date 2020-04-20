@@ -116,9 +116,9 @@ body{
 .card{
   position: absolute;
   top: 120%;
-  left: 40%;
+  left: 30%;
   transform: (-50%, -50%);
-  width: 400px;
+  width: 600px;
   background-color: white;
   border-radius: 10px;
 }
@@ -134,7 +134,7 @@ body{
 }
 
 .edit-button{
-  width: 400px;
+  width: 600px;
   height: 40px;
   background-color: #0072CE;
   color: white;
@@ -143,8 +143,8 @@ body{
 }
 .slider{
   border-radius: 10px;
-  width:400px;
-  height:250px;
+  width:600px;
+  height: 400px;
   overflow: hidden;
   grid-area: image;
 }
@@ -156,17 +156,17 @@ body{
 
 .img-navs {
   position: relative;
-  bottom: 20px;
+  bottom: 35px;
   left: 80%;
   transform: translateX(-50%);
   display: flex;
 }
 
 .bar{
-  width: 40px;
-  height: 10px;
+  width: 60px;
+  height: 13px;
   border: 1px solid #fff;
-  margin: 5px;
+  margin: 10px;
   cursor:pointer;
   transition: 0.4s;
 }

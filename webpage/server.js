@@ -1,26 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const pageRouter = require('./routes/pages')
-
-/*
-// mysql connection
-var connection = mysql.createConnection({
-
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database
-});
-
-connection.connect(function(error) {
-    if(!!error) {
-        console.log(err);
-    } else {
-        console.log('Connected');
-    }
-});
-*/
+const pageRouter = require('./routes/pages');
 
 
 // EJS* （Keep it on top）
