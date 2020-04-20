@@ -4,30 +4,65 @@ const User = require('../core/user');
 const pool = require('../core/pool');
 const user = new User();
 
-//const PicuNavigation = require('../core/navigation');
-//const picuNavigation = new PicuNavigation();
-//const picuNav = picuNavigation.find();
-
 //login page
 router.get('/login', (req, res, next) => res.render('login.ejs'));
+
 //home page
-//router.get('/home', (req, res, next) => res.render('home.ejs'));
+router.get('/home', (req, res, next) => res.render('home.ejs'));
+
 //picu page
-router.get('/picu', (req, res, next) => res.render('picu.ejs'));
+router.get('/picu', (req, res, next) => {
+    let sql = 'SELECT Nav_name, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "2" AND Nav_name = Page_name;'
+    pool.query(sql, (err, navs) => {
+        if (err) {
+        console.dir(err);
+        }
+        res.render('navigation.ejs', {navs})
+    });
+});
+
+//your child page
+router.get('/yourchild', (req, res, next) => {
+    let sql = 'SELECT Nav_name, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "3" AND Nav_name = Page_name;'
+    pool.query(sql, (err, navs) => {
+        if (err) {
+        console.dir(err);
+        }
+        res.render('navigation.ejs', {navs})
+    });
+});
+
+//team page
+router.get('/team', (req, res, next) => {
+    let sql = 'SELECT Nav_name, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "4" AND Nav_name = Page_name;'
+    pool.query(sql, (err, navs) => {
+        if (err) {
+        console.dir(err);
+        }
+        res.render('navigation.ejs', {navs})
+    });
+});
+
+//visit page
+router.get('/visit', (req, res, next) => {
+    let sql = 'SELECT Nav_name, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "5" AND Nav_name = Page_name;'
+    pool.query(sql, (err, navs) => {
+        if (err) {
+        console.dir(err);
+        }
+        res.render('navigation.ejs', {navs})
+    });
+});
+
 //content page
 router.get('/content', (req, res, next) => res.render('content.ejs'));
+
 //edit content
 router.get('/edit-content', (req, res, next) => res.render('edit-content.ejs'));
+
 //user page
 router.get('/user', (req, res, next) => res.render('user.ejs'));
 
-
-
-
-//sidebar navigation
-//router.get('/', (req, res, next) => {
-//    res.render('partials/header.ejs', {picuNav: picuNavigation.find()})
-//});
 
 //post login data
 router.post('/login', (req, res, next) => {
@@ -53,17 +88,6 @@ router.get('/content/:parentId', (req, res, next) => {
         res.render('content.ejs', {contents})
     });
 });
-
-router.get('/home', (req, res, next) => {
-    let sql = 'SELECT Nav_name FROM navigation WHERE Page_id = "2"';
-    pool.query(sql, (err, PICUnavs) => {
-        if (err) {
-        console.dir(err);
-        }
-        res.render('home.ejs', {PICUnavs})
-    });
-});
-
 
 
 module.exports = router;

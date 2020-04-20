@@ -1,0 +1,8 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <% for (var nav of navs) { %>
+            <a> <%= nav.Nav_name %> </a>
+            <a> <%= nav.id %> </a>
+        <% } %>
+    </div>
+<%- include('partials/footer.ejs') %>
