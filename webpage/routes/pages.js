@@ -83,7 +83,7 @@ router.get('/yourchild', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('navigation.ejs', {navs})
+        res.render('yourchild-nav.ejs', {navs})
     });
 });
 
@@ -141,6 +141,18 @@ router.get('/content/:parentId', (req, res, next) => {
         }
         res.render('content.ejs', {contents})
     });
+});
+
+//get sub-navigation data
+router.get('/navigation/:parentId', (req, res, next) => {
+  var parentId = req.params.parentId;
+  let sql = 'SELECT Nav_name, page.Page_id AS id FROM navigation, page WHERE navigation.Page_id = "' + parentId + '" AND Nav_name = Page_name;';
+  pool.query(sql, (err, navs) => {
+      if (err) {
+      console.dir(err);
+      }
+      res.render('sub-navigation.ejs', {parentId, navs})
+  });
 });
 
 //upload images

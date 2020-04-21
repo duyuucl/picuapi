@@ -1,7 +1,7 @@
 <%- include('partials/header.ejs') %>
 <div class="main_content">
     <div class="header">
-        <h2>CONSENT page</h2>
+        <h2>Content</h2>
     </div>
     <div class="card">
 
@@ -33,7 +33,9 @@
         <div class="card-text">
             <% for (var content of contents) { %>
             <%= content.Text %>
-            <p>Currently we do not seek written consent for intensive care procedures in line with practice across the UK. Many of these procedures may be invasive, such as insertion of breathing tubes, venous and arterial lines, and chest drains. It may also include blood transfusions.</p> <p>All ICU procedures carry risks. However, we only carry them out if we think the overall benefit to care is greater than the risk of each individual procedure. Where possible, we will discuss the risks and benefits with you before carrying them out. Sometimes though, these procedures need to be carried out urgently and this will not be possible.</p> <p>If you have any concerns, please raise this with the team at the bedside, or contact us through the FAQ page.</p>
+<!--
+                <p>Currently we do not seek written consent for intensive care procedures in line with practice across the UK. Many of these procedures may be invasive, such as insertion of breathing tubes, venous and arterial lines, and chest drains. It may also include blood transfusions.</p> <p>All ICU procedures carry risks. However, we only carry them out if we think the overall benefit to care is greater than the risk of each individual procedure. Where possible, we will discuss the risks and benefits with you before carrying them out. Sometimes though, these procedures need to be carried out urgently and this will not be possible.</p> <p>If you have any concerns, please raise this with the team at the bedside, or contact us through the FAQ page.</p>
+-->
             <% } %>
         </div>
         <form action="/edit-content_8" method="GET">

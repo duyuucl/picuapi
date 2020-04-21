@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>Page Menu</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-text">
+                <p>You can find the sub-pages listed in this page below. Please select a page you want to review:</p>
+            </div>
+            <div class="card-text">
+                Current page contents, displayed above the sub-page list:
+                <li class="item">
+                    <a href='/content/<%= parentId %>'> REVIEW AND EDIT </a>
+                </li>
+            </div>
+            <div class="card-text">
+                Sub-pages:
+                <% for (var nav of navs) { %>
+                    <li class="item">
+                        <a href='/content/<%= nav.id %>'> <%= nav.Nav_name %> </a>
+                    </li>
+                <% } %>
+            </div>            
+        </div>
+    </div>
+<%- include('partials/footer.ejs') %>

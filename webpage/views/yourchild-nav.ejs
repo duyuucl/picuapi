@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>Tab Menu</h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-text">
+                <p>You can find the pages listed under this tab below. Please select a page you want to review:</p>
+            </div>
+            <div class="card-text">
+                <% for (var nav of navs) { %>
+                    <li class="item">
+                        <a href='/navigation/<%= nav.id %>'> <%= nav.Nav_name %> </a>
+                    </li>
+                <% } %>
+            </div>            
+        </div>
+    </div>
+<%- include('partials/footer.ejs') %>
