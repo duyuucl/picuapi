@@ -83,7 +83,7 @@ router.get('/yourchild', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('yourchild-nav.ejs', {navs})
+        res.render('adv-navigation.ejs', {navs})
     });
 });
 
@@ -94,7 +94,7 @@ router.get('/team', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('navigation.ejs', {navs})
+        res.render('adv-navigation.ejs', {navs})
     });
 });
 
