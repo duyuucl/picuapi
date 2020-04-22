@@ -12,13 +12,13 @@
                 <input type="radio" name="r" id="r3">
                 <% for (var content of contents) { %>
                 <div class="slide s1">
-                    <img src="<%= content.Image1_path %>" alt="">
+                    <img src=".<%= content.Image1_path %>" alt="">
                 </div>
                 <div class="slide">
-                    <img src="<%= content.Image2_path %>" alt="">
+                    <img src=".<%= content.Image2_path %>" alt="">
                 </div>
                 <div class="slide">
-                    <img src="<%= content.Image3_path %>" alt="">
+                    <img src=".<%= content.Image3_path %>" alt="">
                 </div>
                 <% } %>
             </div>
@@ -33,12 +33,10 @@
         <div class="card-text">
             <% for (var content of contents) { %>
             <%= content.Text %>
-<!--
-                <p>Currently we do not seek written consent for intensive care procedures in line with practice across the UK. Many of these procedures may be invasive, such as insertion of breathing tubes, venous and arterial lines, and chest drains. It may also include blood transfusions.</p> <p>All ICU procedures carry risks. However, we only carry them out if we think the overall benefit to care is greater than the risk of each individual procedure. Where possible, we will discuss the risks and benefits with you before carrying them out. Sometimes though, these procedures need to be carried out urgently and this will not be possible.</p> <p>If you have any concerns, please raise this with the team at the bedside, or contact us through the FAQ page.</p>
--->
             <% } %>
+            
         </div>
-        <form action="/edit-content_8" method="GET">
+        <form action="/edit-content/<%= parentId %>" method="GET">
         <button class="edit-button">Edit</button>
         </form>
     </div>
