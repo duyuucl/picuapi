@@ -22,8 +22,26 @@
 
   <ion-card 
     *ngFor="let content of contents">
-    <img src="{{ content.Image1_path }}" />
-    <ion-card-content> {{ content.Text }} </ion-card-content>
+    <ion-slides pager="true">
+      <ng-container *ngIf="content.Image1_path">
+        <ion-slide>
+          <img src="{{ content.Image1_path }}" />
+        </ion-slide>
+      </ng-container>
+      <ng-container *ngIf="content.Image2_path">
+        <ion-slide>
+          <img src="{{ content.Image2_path }}" />
+        </ion-slide>
+      </ng-container>
+      <ng-container *ngIf="content.Image3_path">
+        <ion-slide>
+          <img src="{{ content.Image3_path }}" />
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
+    <ion-card-content>
+      <pre [innerHTML]="content.Text" wrap></pre>
+    </ion-card-content>
   </ion-card>
 
   <ion-grid>

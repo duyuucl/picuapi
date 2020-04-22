@@ -83,7 +83,7 @@ router.get('/yourchild', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('yourchild-nav.ejs', {navs})
+        res.render('adv-navigation.ejs', {navs})
     });
 });
 
@@ -94,7 +94,7 @@ router.get('/team', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('navigation.ejs', {navs})
+        res.render('adv-navigation.ejs', {navs})
     });
 });
 
@@ -113,7 +113,10 @@ router.get('/visit', (req, res, next) => {
 router.get('/content', (req, res, next) => res.render('content.ejs'));
 
 //edit content
-router.get('/edit-content', (req, res, next) => res.render('edit-content.ejs'));
+router.get('/edit-content/:parentId', (req, res, next) => {
+    var parentId = req.params.parentId;
+    res.render('edit-content.ejs', {parentId})
+});
 
 //user page
 router.get('/user', (req, res, next) => {
@@ -147,7 +150,7 @@ router.get('/content/:parentId', (req, res, next) => {
         if (err) {
         console.dir(err);
         }
-        res.render('content.ejs', {contents})
+        res.render('content.ejs', {contents, parentId})
     });
 });
 
@@ -165,16 +168,18 @@ router.get('/navigation/:parentId', (req, res, next) => {
 
 //upload images
 // upload img1
-router.post('/edit-content/upload-img1_:parentId',(req, res, next) => {
+router.post('/edit-content/upload-img1/:parentId',(req, res, next) => {
     var parentId = req.params.parentId;
     upload1(req, res, (err) => {
         if(err){
           res.render('edit-content.ejs', {
+            parentId,
             msg: err
           });
         } else {
           if(req.file == undefined){
             res.render('edit-content.ejs', {
+              parentId,
               msg: 'Error: No File Selected!'
             });
           } else {
@@ -186,7 +191,8 @@ router.post('/edit-content/upload-img1_:parentId',(req, res, next) => {
                 console.dir(err);
                 } else {
                 res.render('edit-content.ejs', {
-                    msg: 'Image 1 Uploaded!'
+                  parentId,
+                  msg: 'Image 1 Uploaded!'
                 }); }
             });
           }
@@ -195,17 +201,19 @@ router.post('/edit-content/upload-img1_:parentId',(req, res, next) => {
 });
 
 // upload img2
-router.post('/edit-content/upload-img2_:parentId',(req, res, next) => {
+router.post('/edit-content/upload-img2/:parentId',(req, res, next) => {
     var parentId = req.params.parentId;
     upload2(req, res, (err) => {
         if(err){
           res.render('edit-content.ejs', {
-            msg: err
+            msg: err,
+            parentId
           });
         } else {
           if(req.file == undefined){
             res.render('edit-content.ejs', {
-              msg: 'Error: No File Selected!'
+              msg: 'Error: No File Selected!',
+              parentId
             });
           } else {
             let sql = 'UPDATE `content` SET `Image2_path` = "'+ 
@@ -216,7 +224,8 @@ router.post('/edit-content/upload-img2_:parentId',(req, res, next) => {
                 console.dir(err);
                 } else {
                 res.render('edit-content.ejs', {
-                    msg: 'Image 2 Uploaded!'
+                    msg: 'Image 2 Uploaded!',
+                    parentId
                 }); }
             });
           }
@@ -225,17 +234,19 @@ router.post('/edit-content/upload-img2_:parentId',(req, res, next) => {
 });
 
 // upload img3
-router.post('/edit-content/upload-img3_:parentId',(req, res, next) => {
+router.post('/edit-content/upload-img3/:parentId',(req, res, next) => {
     var parentId = req.params.parentId;
     upload3(req, res, (err) => {
         if(err){
           res.render('edit-content.ejs', {
-            msg: err
+            msg: err,
+            parentId
           });
         } else {
           if(req.file == undefined){
             res.render('edit-content.ejs', {
-              msg: 'Error: No File Selected!'
+              msg: 'Error: No File Selected!',
+              parentId
             });
           } else {
             let sql = 'UPDATE `content` SET `Image3_path` = "'+ 
@@ -246,12 +257,28 @@ router.post('/edit-content/upload-img3_:parentId',(req, res, next) => {
                 console.dir(err);
                 } else {
                 res.render('edit-content.ejs', {
-                    msg: 'Image 3 Uploaded!'
+                    msg: 'Image 3 Uploaded!',
+                    parentId
                 }); }
             });
           }
         }
     });
+});
+//Upload text
+router.post('/edit-content/upload-text/:parentId',(req, res, next) => {
+  var parentId = req.params.parentId;
+  let sql = 'UPDATE `content` SET `Text` = "'+ req.body.editor+ '" WHERE (`Page_id` = "' + parentId + '");';
+  pool.query(sql, (err, navs) => {
+      if (err) {
+      console.dir(err);
+      }
+      res.render('edit-content.ejs', {
+        msg: 'Text uploaded!',
+        parentId
+    })
+  });
+  console.log(req.body.editor)
 });
 
 

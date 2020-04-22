@@ -20,7 +20,7 @@ app.use(session({
     }
 }));
 
-//css
+// static engine
 app.use('/public', express.static('public'));
 
 // Routes
