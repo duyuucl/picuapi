@@ -116,7 +116,15 @@ router.get('/content', (req, res, next) => res.render('content.ejs'));
 router.get('/edit-content', (req, res, next) => res.render('edit-content.ejs'));
 
 //user page
-router.get('/user', (req, res, next) => res.render('user.ejs'));
+router.get('/user', (req, res, next) => {
+  let sql = 'SELECT * FROM user;'
+  pool.query(sql, (err, users) => {
+    if (err) {
+    console.dir(err);
+    }
+    res.render('user.ejs', {users})
+});
+});
 
 //post login data
 router.post('/login', (req, res, next) => {
