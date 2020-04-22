@@ -16,6 +16,8 @@ export class QAPage implements OnInit {
     this.isDisabled = true;
   }
 
+  submitted = false;
+
   public questions : any = [];
   public form : FormGroup;
 
@@ -52,6 +54,7 @@ export class QAPage implements OnInit {
       let url = "https://picuapi.azurewebsites.net/api/navs/qa" ;
       this.http.post(url, {name: value.name, feedback: value.feedback}).subscribe(data =>{
          console.log(data);
+      this.submitted = true;
    });
    }
 
