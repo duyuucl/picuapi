@@ -50,11 +50,13 @@
         </ion-list>
       </form>
     </ion-card-content>
+    <ion-card-content class="faq-card-text" *ngIf="submitted">FEEDBACK SUCCESSFULLY SUBMITTED!</ion-card-content>
     <ion-button expand="full "fill="outline" size="small" color="medium" shape="round" 
     [disabled]="!form.valid"
-    (click)="saveDetails(form.value)">
+    (click)="saveDetails(form.value)"
+    *ngIf="!submitted">
       Submit
-    </ion-button>
+    </ion-button>    
   </ion-card>
 
 </ion-content>
