@@ -118,15 +118,38 @@ router.get('/edit-content/:parentId', (req, res, next) => {
     res.render('edit-content.ejs', {parentId})
 });
 
+//feedback page
+router.get('/feedback', (req, res, next) => {
+  let sql = 'SELECT * FROM feedback;';
+  pool.query(sql, (err, feedback) => {
+    if (err) {
+    console.dir(err);
+    }
+    res.render('feedback.ejs', {feedback})
+  });
+});
+
+//delete feedback
+router.post('/feedback', (req, res, next) => {
+  var id = req.body.feedback_id;
+  let sql = 'DELETE FROM feedback WHERE feedback_id = "'+ id +'";';
+  pool.query(sql, (err) => {
+    if (err) {
+    console.dir(err);
+    }
+    res.render('message.ejs', {message: 'The feedback message was successfully deleted!'});
+  });
+});
+
 //user page
 router.get('/user', (req, res, next) => {
-  let sql = 'SELECT * FROM user;'
+  let sql = 'SELECT * FROM user;';
   pool.query(sql, (err, users) => {
     if (err) {
     console.dir(err);
     }
     res.render('user.ejs', {users})
-});
+  });
 });
 
 //post login data
@@ -265,6 +288,7 @@ router.post('/edit-content/upload-img3/:parentId',(req, res, next) => {
         }
     });
 });
+
 //Upload text
 router.post('/edit-content/upload-text/:parentId',(req, res, next) => {
   var parentId = req.params.parentId;

@@ -230,3 +230,28 @@ input[name="r"]{
   left: 5%;
   top: 30px;
 }
+
+/* feedback page */
+table {
+  border-collapse: collapse;
+  width: 130%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.delete-button{
+  width: 100px;
+  height: 30px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 5px;
+}
