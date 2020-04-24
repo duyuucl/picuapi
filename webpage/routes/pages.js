@@ -130,7 +130,7 @@ router.post('/feedback', (req, res, next) => {
   pool.query(sql, (err) => {
     if (err) {
     console.dir(err);
-    }
+    }    
     res.render('feedback-del.ejs', {message: 'The feedback message was successfully deleted!'});
   });
 });

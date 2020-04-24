@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') %>
+<div class="main_content">
+    <div class="header">
+        <h2>Edit User Access</h2>
+    </div>
+    <form action="/user" method="GET">
+        <button type="submit" name="submit" class="back-btn">Back</button>
+    </form>
+    <p><%= typeof msg != 'undefined' ? msg : '' %></p>
+    <div class="faq-edit-cont">
+        <form action="/user-edit/updatesuccessful/<%= userId %>" method="POST">
+            <div class="faq-edit-que">
+                <p style="font-size: 20px;">Email:</p>
+                <br>
+                <textarea name="newName" id="newName" class="faq-que-area"></textarea>
+            </div>
+            <br>
+            <div class="faq-edit-ans">
+                <p style="font-size: 20px;">Password:</p>
+                <br>
+                <textarea name="newPassword" id="newPassword" class="faq-ans-area"></textarea>
+                <button type="submit" name="submit" class="upload-btn">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<%- include('partials/footer.ejs') %>

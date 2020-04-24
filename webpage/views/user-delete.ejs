@@ -1,0 +1,13 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>FAQ</h2>
+        </div>
+        <div>
+            <%= typeof msg != 'undefined' ? msg : '' %>
+        </div>
+        <form action="/faq" method="GET">
+            <button type="submit" name="submit" class="back-btn">Go Back</button>
+        </form>
+    </div>
+<%- include('partials/footer.ejs') %>

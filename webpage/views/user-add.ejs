@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs') %>
+<div class="main_content">
+    <div class="header">
+        <h2>Add New Question</h2>
+    </div>
+    <form action="/faq" method="GET">
+        <button type="submit" name="submit" class="back-btn">Back</button>
+    </form>
+    <p><%= typeof msg != 'undefined' ? msg : '' %></p>
+    <div class="faq-edit-cont">
+        <form action="/add-faq/addsuccessful" method="POST">
+            <div class="faq-edit-que">
+                <p style="font-size: 20px;">Question:</p>
+                <br>
+                <textarea name="editor" id="editor" placeholder="Please enter your question here..." class="faq-que-area"></textarea>
+            </div>
+            <br>
+            <div class="faq-edit-ans">
+                <p style="font-size: 20px;">Answer:</p>
+                <br>
+                <textarea name="editor1" id="editor1" placeholder="Please enter your answer here..." class="faq-ans-area">
+                </textarea>
+                <button type="submit" name="submit" class="upload-btn">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/public/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor1');
+</script>
+
+
+
+
+<%- include('partials/footer.ejs') %>
