@@ -255,3 +255,72 @@ tr:nth-child(even) {
   font-size:15px;
   border-radius: 5px;
 }
+
+/* faq page */
+.delete-faq{
+  width: 100px;
+  height: 30px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 5px;
+}
+
+.edit-faq{
+  width: 100px;
+  height: 30px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 5px;
+}
+
+.add-faq{
+  position: relative;
+  left: 39%;
+  width: 200px;
+  height: 40px;
+  background-color: #0072CE;
+  color: white;
+  font-size:18px;
+  border-radius: 5px;
+}
+
+/* edit faq page */
+.faq-edit-cont{
+  position: relative;
+  top: 5%;
+  left: 15%;
+  transform: (-50%, -50%);
+  width: 600px;
+  background-color: E8EDEE;
+  border-radius: 10px;
+}
+
+.faq-que-area{
+  width: 600px;
+  min-height: 20px;
+  max-height: 70px;
+  outline: 0; 
+  font-size: 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.faq-ans-area{
+  width: 600px;
+  min-height: 250px;
+  outline: 0; 
+  font-size: 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.back-btn{
+  width: 100px;
+  height: 30px;
+  background-color: #0072CE;
+  color: white;
+  font-size:15px;
+  border-radius: 5px
+}
