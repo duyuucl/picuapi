@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>FAQ</h2>
+        </div>
+        <p><%= typeof msg != 'undefined' ? msg : '' %></p>
+        <table style="width:100%">
+            <tr>
+            <th>ID</th>
+            <th>Questions</th>
+            <th>Answers</th>
+            <th>Actions</th>
+            </tr>
+            <% for (var q of questions) {%>
+            <tr>
+                <th><%= q.Q_id %></th>
+                <th><%= q.Q_title %></th>
+                <th>
+                    <p><%= q.Q_answer %></p>
+                </th>
+                <th>
+                    <form action="/edit-faq/<%= q.Q_id %>" method="GET">
+                        <button type="submit" class="edit-faq">Edit</button>
+                    </form>
+                    <br>
+                    <form action="/faq/delete/<%= q.Q_id %>" method="POST">
+                         <button type="submit" class="delete-faq">Delete</button>
+                    </form>
+                </th>   
+            </tr>
+            <% } %>
+        </table>
+        <br>
+        <form action="/add-faq" method="GET">
+            <button type="submit" class="add-faq">Add a new question</button>
+        </form>
+        <br>
+        <br>
+    </div>
+<%- include('partials/footer.ejs') %>

@@ -1,9 +1,8 @@
 <ion-header>
   <ion-toolbar text-center>
     <ion-buttons slot="start">
-      <ion-button 
-        (click)="MyAction()" href="/tabs/home">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      <ion-button (click)="MyAction()" href="/tabs/qa">
+        <ion-icon slot="icon-only" name="help"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title class="header-title">DETAILS</ion-title>
@@ -39,8 +38,6 @@
         </ion-slide>
       </ng-container>
     </ion-slides>
-    <ion-card-content>
-      <pre [innerHTML]="content.Text" wrap></pre>
-      </ion-card-content>
+    <ion-card-content><pre [innerHTML]="content.Text" wrap></pre></ion-card-content>
   </ion-card>
 </ion-content>

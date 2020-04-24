@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>Feedback</h2>
+        </div>
+
+        <table style="width:100%">
+            <tr>
+            <th>Name</th>
+            <th>Feedback</th>
+            <th>Date</th>
+            <th></th>
+            </tr>
+            <% for (var f of feedback) { %>
+            <tr>
+            <td><%= f.user_name %></td>
+            <td><%= f.feedback %></td>
+            <td><%= f.date %></td>
+            <td>
+            <form action="/feedback" method="POST">
+                <input id="feedback_id" name="feedback_id" type="hidden" class="form-control" value=<%=f.feedback_id%> />
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+            </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+<%- include('partials/footer.ejs') %>

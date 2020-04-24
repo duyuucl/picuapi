@@ -1,0 +1,43 @@
+<%- include('partials/header.ejs') %>
+<div class="main_content">
+    <div class="header">
+        <h2>Edit Question</h2>
+    </div>
+    <form action="/faq" method="GET">
+        <button type="submit" name="submit" class="back-btn">Back</button>
+    </form>
+    <p><%= typeof msg != 'undefined' ? msg : '' %></p>
+    <div class="faq-edit-cont">
+        <form action="/edit-faq/updatesuccessful/<%= questionId %>" method="post">
+            <div class="faq-edit-que">
+                <p style="font-size: 20px;">Question:</p>
+                <br>
+                <textarea id="question" placeholder="Please enter your question here..." class="faq-que-area" rows="4" cols="50">
+                    <% if(typeof questions != 'undefined'){ %> <% questions.forEach(function(q) { %>
+                    <%= q.Q_title %>
+                    <% }); %> <% } %>
+                </textarea>
+            </div>
+            <br>
+            <div class="faq-edit-ans">
+                <p style="font-size: 20px;">Answer:</p>
+                <br>
+                <textarea name="answer" id="answer" placeholder="Please enter your answer here..." class="faq-ans-area" rows="4" cols="50">
+                    <% if(typeof questions != 'undefined'){ %> <% questions.forEach(function(q) { %>
+                        <%= q.Q_answer %>
+                    <% }); %> <% } %>
+                </textarea>
+            </div>
+            
+            <button type="submit" name="submit" class="upload-btn">Submit<button>
+        </form>
+    </div>
+</div>
+<script src="/public/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('answer');
+</script>
+
+
+
+<%- include('partials/footer.ejs') %>
