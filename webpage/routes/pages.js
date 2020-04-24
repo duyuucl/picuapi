@@ -131,7 +131,7 @@ router.post('/feedback', (req, res, next) => {
     if (err) {
     console.dir(err);
     }
-    res.render('message.ejs', {message: 'The feedback message was successfully deleted!'});
+    res.render('feedback-del.ejs', {message: 'The feedback message was successfully deleted!'});
   });
 });
 

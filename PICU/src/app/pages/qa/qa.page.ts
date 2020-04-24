@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidatorsService } from 'src/app/services/validators.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-qa',
@@ -21,7 +22,7 @@ export class QAPage implements OnInit {
   public questions : any = [];
   public form : FormGroup;
 
-  constructor(private http: HttpClient, public formBuilder: FormBuilder, private _valid: ValidatorsService ) {
+  constructor(private http: HttpClient, public formBuilder: FormBuilder, private _valid: ValidatorsService, private domSanitizer: DomSanitizer) {
      
       this.form = formBuilder.group({
          'name': ['', Validators.required, _valid.nameValid],
@@ -58,7 +59,11 @@ export class QAPage implements OnInit {
    });
    }
 
-  ngOnInit() {
-  }
+   ngOnInit() {
+   }
+
+   getInnerHTMLValue() {
+      return this.domSanitizer.bypassSecurityTrustHtml(this.questions.Q_answer);
+   }
 
 }

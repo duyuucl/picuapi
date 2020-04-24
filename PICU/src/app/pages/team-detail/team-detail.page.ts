@@ -47,25 +47,6 @@ export class TeamDetailPage implements OnInit {
       });
    }
 
-/*
-  public contents : Array<{image1: string, image2: string, image3: string, text: string, parent: number}>;
-
-  constructor(private _router : Router) { 
-    this.contents =[
-      { image1 : '../assets/yourchild_photos/bedspace.png',
-        image2 : '../assets/yourchild_photos/ventilator1.png',
-        image3 : null,
-        text : 'Text with relevant contents',
-        parent : 1
-      }
-    ];
-  }
-
-  public setNavigationLink(page: any) : void
-  {
-    this._router.navigateByUrl('/'+page.link);
-  }
-*/
   ngOnInit() {
     this.contents.Text = this.getInnerHTMLValue();
   }

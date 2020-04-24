@@ -13,12 +13,12 @@
             </tr>
             <% for (var q of questions) {%>
             <tr>
-                <th><%= q.Q_id %></th>
-                <th><%= q.Q_title %></th>
-                <th>
+                <td><%= q.Q_id %></td>
+                <td><%= q.Q_title %></td>
+                <td>
                     <p><%= q.Q_answer %></p>
-                </th>
-                <th>
+                </td>
+                <td>
                     <form action="/edit-faq/<%= q.Q_id %>" method="GET">
                         <button type="submit" class="edit-faq">Edit</button>
                     </form>
@@ -26,7 +26,7 @@
                     <form action="/faq/delete/<%= q.Q_id %>" method="POST">
                          <button type="submit" class="delete-faq">Delete</button>
                     </form>
-                </th>   
+                </td>   
             </tr>
             <% } %>
         </table>
