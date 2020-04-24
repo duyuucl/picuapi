@@ -7,13 +7,27 @@
 
 <body>
 <div class="main_content">
-    <div class="card-text">
-        <% for (var user of users) { %>
-            <li class="item">
-                <a> <%= user.id %> <%= user.email %> <%= user.password %></a>
-            </li>
-        <% } %>
-    </div>  
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Select</th>
+              </tr>
+            </thead>
+            <tbody class="item">
+            <% for (var user of users) { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.password %></td>
+                <td>placeholder</td> 
+              </tr>
+              <% } %> 
+            </tbody>
+          </table>
+                
 </div>
 </body>
 
