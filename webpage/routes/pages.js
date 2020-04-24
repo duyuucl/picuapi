@@ -112,21 +112,112 @@ router.get('/visit', (req, res, next) => {
 //content page
 router.get('/content', (req, res, next) => res.render('content.ejs'));
 
-//edit content
-router.get('/edit-content/:parentId', (req, res, next) => {
-    var parentId = req.params.parentId;
-    res.render('edit-content.ejs', {parentId})
+//feedback page
+router.get('/feedback', (req, res, next) => {
+  let sql = 'SELECT * FROM feedback;';
+  pool.query(sql, (err, feedback) => {
+    if (err) {
+    console.dir(err);
+    }
+    res.render('feedback.ejs', {feedback})
+  });
 });
+
+//delete feedback
+router.post('/feedback', (req, res, next) => {
+  var id = req.body.feedback_id;
+  let sql = 'DELETE FROM feedback WHERE feedback_id = "'+ id +'";';
+  pool.query(sql, (err) => {
+    if (err) {
+    console.dir(err);
+    }
+    res.render('message.ejs', {message: 'The feedback message was successfully deleted!'});
+  });
+});
+
+
+//FAQ page
+router.get('/faq', (req, res, next) =>{
+  let sql = 'SELECT Q_id, Q_title, Q_answer FROM faq';
+  pool.query(sql, (err, questions) => {
+      if (err) {
+      console.dir(err);
+      }
+      res.render('faq.ejs', {questions})
+  });
+});
+
+
+//Edit question in FAQ page
+router.get('/edit-faq/:questionId', (req, res, next) => {
+  var questionId = req.params.questionId;
+  let sql = 'SELECT Q_id, Q_title, Q_answer FROM faq WHERE (`Q_id` = "' + questionId + '");';
+  pool.query(sql, (err, questions) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('edit-faq.ejs', {
+        questions,
+        questionId
+      })}
+  });
+});
+
+// new faq submit successful
+router.post('/edit-faq/updatesuccessful/:questionId', (req, res, next) => {
+  var questionId = req.params.questionId;
+  let sql = 'UPDATE `faq` SET `Q_title` = "'+ req.body.editor+ '", `Q_answer` = "'+ req.body.editor1+ '" WHERE (`Q_id` = "' + questionId + '");';
+  pool.query(sql, (err) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('edit-faq.ejs', {
+        msg: 'Question '+ questionId +' has been updated!',
+        questionId
+      })}
+  });
+});
+
+//Add question in FAQ page
+router.get('/add-faq', (req, res, next) => res.render('add-faq.ejs') )
+
+//Add question in FAQ page successful
+router.post('/add-faq/addsuccessful', (req, res, next) => {
+  let sql = 'INSERT INTO `faq` (`Q_title`, `Q_answer`) VALUES ("'+req.body.editor+'", "'+req.body.editor1+'");'
+  pool.query(sql, (err) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('add-faq.ejs', {
+        msg: 'New question added!',
+      })}
+  });
+})
+
+//delete question
+router.post('/faq/delete/:questionId', (req, res, next) => {
+  var questionId = req.params.questionId;
+  let sql = 'DELETE FROM faq WHERE Q_id = "'+questionId+'";';
+  pool.query(sql, (err) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('faq-del-msg.ejs', {
+        msg: 'Question '+ questionId +' has been deleted!',
+      })}
+  });
+})
+
 
 //user page
 router.get('/user', (req, res, next) => {
-  let sql = 'SELECT * FROM user;'
+  let sql = 'SELECT * FROM user;';
   pool.query(sql, (err, users) => {
     if (err) {
     console.dir(err);
     }
     res.render('user.ejs', {users})
-});
+  });
 });
 
 //post login data
@@ -152,6 +243,21 @@ router.get('/content/:parentId', (req, res, next) => {
         }
         res.render('content.ejs', {contents, parentId})
     });
+});
+
+//edit content
+router.get('/edit-content/:parentId', (req, res, next) => {
+  var parentId = req.params.parentId;
+  let sql = 'SELECT Text FROM content WHERE Page_id = "' + parentId + '";';
+  pool.query(sql, (err, contents) => {
+    if (err) {
+    console.dir(err);
+    } else{
+    res.render('edit-content.ejs', {
+      contents,
+      parentId
+    })}
+  });
 });
 
 //get sub-navigation data
@@ -265,6 +371,7 @@ router.post('/edit-content/upload-img3/:parentId',(req, res, next) => {
         }
     });
 });
+
 //Upload text
 router.post('/edit-content/upload-text/:parentId',(req, res, next) => {
   var parentId = req.params.parentId;
@@ -278,7 +385,6 @@ router.post('/edit-content/upload-text/:parentId',(req, res, next) => {
         parentId
     })
   });
-  console.log(req.body.editor)
 });
 
 

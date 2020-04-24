@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+    <div class="main_content">
+        <div class="header">
+            <h2>Update Outcome</h2>
+        </div>
+
+        <form action="/feedback" method="GET">
+            <button type="submit" name="submit" class="back-btn">Back</button>
+        </form>
+
+        <div>
+            <%= message %>
+        </div>
+    </div>
+<%- include('partials/footer.ejs') %>

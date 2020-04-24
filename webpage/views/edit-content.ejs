@@ -29,7 +29,10 @@
     </form>
     <form action="/edit-content/upload-text/<%= parentId %>" method="POST">
         <div class="text-editor">
-            <textarea name="editor" id="editor"></textarea>
+            <textarea name="editor" id="editor">
+                <% if(typeof contents != 'undefined'){ %> <% contents.forEach(function(con) { %>
+                <%= con.Text %>
+                <% }); %> <% } %></textarea>
             <button type="submit" name="submit" class="upload-btn">Upload</button>
         </div>
     </form>
