@@ -131,11 +131,7 @@ router.post('/feedback', (req, res, next) => {
     if (err) {
     console.dir(err);
     }
-<<<<<<< HEAD
-    res.render('message.ejs', {message: 'The feedback message was successfully deleted!'});
-=======
     res.render('feedback-del.ejs', {message: 'The feedback message was successfully deleted!'});
->>>>>>> 8a8f8221404b4cbef15626e2d60e94b81e1a08ad
   });
 });
 
@@ -213,7 +209,7 @@ router.post('/faq/delete/:questionId', (req, res, next) => {
 })
 
 
-//user page
+//get user info for user page
 router.get('/user', (req, res, next) => {
   let sql = 'SELECT * FROM user;';
   pool.query(sql, (err, users) => {
@@ -221,6 +217,36 @@ router.get('/user', (req, res, next) => {
     console.dir(err);
     }
     res.render('user.ejs', {users})
+  });
+});
+
+//Edit user in user page
+router.get('/edit-user/:id', (req, res, next) => {
+  var userId = req.params.userId;
+  let sql = 'SELECT id, email, password FROM faq WHERE (`id` = "' + userId + '");';
+  pool.query(sql, (err, questions) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('edit-user.ejs', {
+        email,
+        password
+      })}
+  });
+});
+
+//submit edit user request successful
+router.post('/edit-user/updatesuccessful/:id', (req, res, next) => {
+  var userId = req.params.userId;
+  let sql = 'UPDATE `user` SET `email` = "'+ req.body.newName+ '", `password` = "'+ req.body.newPassword+ '" WHERE (`id` = "' + userId + '");';
+  pool.query(sql, (err) => {
+      if (err) {
+      console.dir(err);
+      } else{
+      res.render('edit-user.ejs', {
+        msg: 'User '+ userId +' has been updated!',
+        userId
+      })}
   });
 });
 
